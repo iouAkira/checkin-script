@@ -19,7 +19,7 @@ if [ ! -f "$checkin_DATA_DIR/config.yaml" ]; then
 fi
 
 # 判断 yaml 模块是否已安装，如果未安装则使用 pip3 安装
-if ! python3 -c "import yaml" &> /dev/null; then
+if ! python3 -c "import yaml" &>/dev/null; then
     pip3 install Pyyaml
 fi
 
@@ -27,6 +27,6 @@ echo "仓库数据路径：$checkin_DATA_DIR"
 echo "仓库定时任务文件：$checkin_CRON_FILE_PATH"
 echo "同步配置文件..."
 
+echo "" >>$checkin_CRON_FILE_PATH
 echo "#定时任务 checkin.py" >>$checkin_CRON_FILE_PATH
 echo "40 7 * * * cd $checkin_DIR; python3 checkin.py >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
-
