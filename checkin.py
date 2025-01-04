@@ -1,12 +1,31 @@
 import yaml
 import time
+import os
 from checkin.checkin_2bulu import Checkin2bulu
 from utils.checkin_notify import notify
 from utils.logger import log
 
 
 def load_config():
-    with open("/data/checkin/config.yaml", "r", encoding="utf-8") as file:
+    # 从系统环境变量 MNT_DIR 目录的 checkin 文件夹中读取 config.yaml 文件
+    mnt_dir = os.getenv("MNT_DIR")
+    config_path = None
+
+    if mnt_dir:
+        config_path = os.path.join(mnt_dir, "checkin", "config.yaml")
+        if not os.path.exists(config_path):
+            log.logger.warning(f"未在 {config_path} 找到配置文件，尝试在当前目录查找。")
+            config_path = None
+
+    # 如果未找到配置文件，则尝试在当前目录查找
+    if not config_path:
+        config_path = "config.yaml"
+        if not os.path.exists(config_path):
+            log.logger.error("未找到配置文件，请确保 config.yaml 文件存在。")
+            raise FileNotFoundError("未找到配置文件，请确保 config.yaml 文件存在。")
+
+    # 读取配置文件
+    with open(config_path, "r", encoding="utf-8") as file:
         return yaml.safe_load(file)
 
 
