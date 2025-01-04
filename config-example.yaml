@@ -1,0 +1,49 @@
+# 通知配置
+notify:
+  telegram:
+    bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
+    chat_id: "YOUR_CHAT_ID"
+
+# 2bulu 配置
+2bulu:
+  accounts:
+    - name: "xxx账号1"
+      cookie: "authCode=xxx_auth_code; token=xxx_token"
+      params:
+        authCode: "xxx_auth_code"
+        authType: "1"
+        deviceName: "iPhone 16 Pro"
+        p_appVersion: "7.8.9"
+        p_productType: "0"
+        p_terminalType: "3"
+        p_userId: "xxx_user_id"
+        sdkLevel: "18.1.1"
+        userId: "xxx_user_id"
+        psign: "xxx_psign"
+      tasks:
+        - name: "每日签到"
+          taskId: 1
+        - name: "注册超过3年"
+          taskId: 2
+
+# xxx 配置
+xxx:
+  accounts:
+    - name: "xxx账号1"
+      cookie: "authCode=xxx_auth_code; token=xxx_token"
+      params:
+        authCode: "xxx_auth_code"
+        authType: "1"
+        deviceName: "iPhone 16 Pro"
+        p_appVersion: "7.8.9"
+        p_productType: "0"
+        p_terminalType: "3"
+        p_userId: "xxx_user_id"
+        sdkLevel: "18.1.1"
+        userId: "xxx_user_id"
+        psign: "xxx_psign"
+      tasks:
+        - name: "xxx每日任务"
+          taskId: 1
+        - name: "xxx特殊任务"
+          taskId: 2
