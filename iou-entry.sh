@@ -27,6 +27,6 @@ echo "仓库数据路径：$checkin_DATA_DIR"
 echo "仓库定时任务文件：$checkin_CRON_FILE_PATH"
 echo "同步配置文件..."
 
-echo "" >>$checkin_CRON_FILE_PATH
+echo "" >$checkin_CRON_FILE_PATH
 echo "#定时任务 checkin.py" >>$checkin_CRON_FILE_PATH
 echo "40 7 * * * cd $checkin_DIR; python3 checkin.py >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
