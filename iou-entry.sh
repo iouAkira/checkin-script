@@ -18,20 +18,15 @@ if [ ! -f "$checkin_DATA_DIR/config.yaml" ]; then
     echo "已复制 config-example.yaml 到 $checkin_DATA_DIR 并重命名为 config.yaml"
 fi
 
-# 判断 requests 模块是否已安装，如果未安装则使用 pip3 安装
-if ! python3 -c "import requests" &> /dev/null; then
-    pip3 install requests
+# 判断 yaml 模块是否已安装，如果未安装则使用 pip3 安装
+if ! python3 -c "import yaml" &> /dev/null; then
+    pip3 install Pyyaml
 fi
 
 echo "仓库数据路径：$checkin_DATA_DIR"
 echo "仓库定时任务文件：$checkin_CRON_FILE_PATH"
 echo "同步配置文件..."
 
-echo "#定时清理空checkin.log" >$checkin_CRON_FILE_PATH
-echo "10 0 * * * echo '' >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
-echo "10 0 * * * echo '' >/data/entrypoint.log " >>$checkin_CRON_FILE_PATH
-echo "" >>$checkin_CRON_FILE_PATH
-
 echo "#定时任务 checkin.py" >>$checkin_CRON_FILE_PATH
-echo "*/10 * * * * cd $checkin_DIR; python3 checkin.py >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
+echo "40 7 * * * cd $checkin_DIR; python3 checkin.py >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
 
