@@ -6,7 +6,7 @@ from utils.logger import log
 
 
 def load_config():
-    with open("config.yaml", "r", encoding="utf-8") as file:
+    with open("/data/checkin/config.yaml", "r", encoding="utf-8") as file:
         return yaml.safe_load(file)
 
 
