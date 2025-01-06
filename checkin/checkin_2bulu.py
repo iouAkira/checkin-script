@@ -70,7 +70,7 @@ class Checkin2bulu:
                                 sum_capacity = after_storage_data["data"]["sumCapacity"]
                                 use_capacity = after_storage_data["data"]["useCapacity"]
                                 self.checkin_msg += f"签到后容量: {sum_capacity / 1024 / 1024:.2f} MB\n"
-                                self.checkin_msg += f"签到后容量: {use_capacity / 1024 / 1024:.2f} MB"
+                                self.checkin_msg += f"当前已使用容量: {use_capacity / 1024 / 1024:.2f} MB"
                                 return f"任务 {config_task['name']} 签到成功"
                             else:
                                 return f"任务 {config_task['name']} 签到失败"
