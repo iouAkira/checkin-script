@@ -1,6 +1,7 @@
 import yaml
 import time
 import os
+import random
 from checkin.checkin_2bulu import Checkin2bulu
 from utils.checkin_notify import notify
 from utils.logger import log
@@ -41,6 +42,12 @@ def main():
 
         for account in task_config["accounts"]:
             log.logger.info(f"正在处理账号: {account['name']}")
+            time.sleep()
+            # # 休眠随机秒数
+            random_seconds = random.randint(1, 240)
+            log.logger.info(f"随机休眠 {random_seconds} 秒...")
+            time.sleep(random_seconds)
+            log.logger.info("随机休眠结束，继续执行脚本。")
             checkin = Checkin2bulu(account)
             checkin.checkin_msg = f"🚶两步路账号: {account['name']} \n\n****************************\n"
             result = checkin.run_checkin()
