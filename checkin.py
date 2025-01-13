@@ -42,7 +42,6 @@ def main():
 
         for account in task_config["accounts"]:
             log.logger.info(f"正在处理账号: {account['name']}")
-            time.sleep()
             # # 休眠随机秒数
             random_seconds = random.randint(1, 240)
             log.logger.info(f"随机休眠 {random_seconds} 秒...")
