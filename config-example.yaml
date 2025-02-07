@@ -30,7 +30,7 @@ notify:
 gold_price:
   accounts:
     - name: "水贝金价"
-      cookie: "Abp.Localization.CultureName=zh-CN; HT.Login.ServiceChannelType=20; HT.PartID=19b4d19b-ffad-477d-af07-b44668e7d4a6; HT.PartDisplayName=%e6%b0%b4%e8%b4%9d%e5%9b%bd%e9%99%85%e4%b8%ad%e5%bf%83; HT.ShopID=afdda96b-7e01-4803-b797-9b2fc877e39b; HT.ShopDisplayName=%e6%b0%b4%e8%b4%9d%e4%bc%9a; HT.FPartID=; .AspNet.ApplicationCookie=86cSymGAg9O3pcjy0suPiTBaYasfaKNjMePG9o_cKJsO3kDGUUaRC-RceIpmDbenixRtYAChxSL_xO3uPQNuESwc3AtywzEDNhxzjfQHF0QCQkRLFb-I37tqRX_JTrH-UE_LOoJIDo1g6a7WvPPjeDWRmBwum9zigtYoi9e7rnaUO3todfCy0NN3LbiTVp4X5t8zPu5G7NKLw0FGNKcoc9nc3FITKNiiEvK6alN9quxNy1v-hPrCSvRay_VCBFw7ROOJnCxXx5SlW6z1QE0pJDvLlpwAIn0jXGJvtSoSBTiJAS_BHFEGOTrEhB2yhdIdfAzKk7PyPaGDRrgFoKOi-HKEU4hjL672c9W97PPOqeRLxJodIzPj-XPNqvpLFmm2LL2F6NCJkHVR56SJUlF7oDC73hSLfxf9ZFpAX4nsGFfDAutRMo2HIjWR0ht6KeO_jPp2Fu9T1uVaioS1GE_LusCNZkJppTo4fW0Zy-pGSbcVcNWC313rCEQVVXZ1EwGd_-SM_LseSiF58CgmKv0MxiXoVcILQ3PfFnNgimq32zMM8hKl5vJpDNt_4ze5pnPi2_39GaPdkVeNBwTH7kR4E-JetwGs1ITSL3WEc5w2QliEQx9tkqGX9mhyNfkkcUef; uvid=0d9abbb8-08a5-45bc-8f37-f4b41cd3a721; HT.Weixin.OpenID=oKcuG5XhJ2u8-2r1gMMhOSGnYNTA; HT.Weixin.ServiceType=30; HT.EmpID=6339a379-0db7-42ed-903d-0fd05be158c0; HT.ServiceChannel=%5b%7b%22ChannelType%22%3a20%2c%22ChannelAppID%22%3a%22wx63977453b4cc6d6c%22%2c%22ChannelEmpInfo%22%3a%22oKcuG5XhJ2u8-2r1gMMhOSGnYNTA%22%2c%22ChannelEmpID%22%3a%22oKcuG5XhJ2u8-2r1gMMhOSGnYNTA%22%7d%5d; "
+      cookie: "Abp.Localization.CultureName=zh-CN; "
 
 # xxx 配置
 xxx:
