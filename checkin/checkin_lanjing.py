@@ -19,7 +19,8 @@ class CheckinLanjing:
 
     def do_checkin(self):
         data = {
-            "{\"id\":\"1557211367844347906\",\"mallId\":\"" + self.mall_id + "\"}" : ""
+            "id":"1557211367844347906",
+            "mallId":"{self.mall_id}" 
         }
         try:
             response = requests.post(self.checkin_url, headers=self.headers, json=data)
@@ -39,7 +40,7 @@ class CheckinLanjing:
                     return False
             else:
                 self.checkin_msg += f"请求失败，状态码：{response.status_code}"
-                log.logger.error(f"蓝鲸世界签到请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求体：{data}")
+                log.logger.error(f"蓝鲸世界签到请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求体：{data}，response：{response.text}")
                 return False
         except Exception as e:
             self.checkin_msg += f"签到异常：{str(e)}"
