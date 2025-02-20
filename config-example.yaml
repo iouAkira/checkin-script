@@ -32,6 +32,20 @@ gold_price:
     - name: "水贝金价"
       cookie: "Abp.Localization.CultureName=zh-CN; "
 
+# 蓝鲸世界配置
+lanjing:
+  accounts:
+    - name: "蓝鲸世界账号1"
+      token: "your_access_token"
+      mall_id: "1547404683667185667"
+
+# 壹方城配置
+yifangcheng:
+  accounts:
+    - name: "壹方城账号1"
+      token: "your_token"
+      mall_id: "000001"
+
 # xxx 配置
 xxx:
   accounts:

@@ -5,6 +5,8 @@ import random
 import sys
 from checkin.checkin_2bulu import Checkin2bulu
 from checkin.daily_gold_price import CheckinGoldPrice
+from checkin.checkin_lanjing import CheckinLanjing
+from checkin.checkin_yifangcheng import CheckinYifangcheng
 from utils.checkin_notify import notify
 from utils.logger import log
 from datetime import datetime, time as datetime_time
@@ -39,7 +41,7 @@ def main():
     # 获取命令行传入的任务类型
     task_type = sys.argv[1] if len(sys.argv) > 1 else None
 
-    # 遍历每种类型（2bulu、gold_price）
+    # 遍历每种类型（2bulu、gold_price、lanjing、yifangcheng）
     for current_task_type, task_config in config.items():
         if current_task_type == "notify":
             continue  # 跳过通知配置
@@ -75,7 +77,32 @@ def main():
                 checkin = CheckinGoldPrice(account)
                 result = checkin.run_checkin()
                 log.logger.info(result)
-                
+                # 发送通知
+                notify(config["notify"], checkin.checkin_msg)
+                time.sleep(5)
+
+        # 处理蓝鲸世界签到
+        if current_task_type == "lanjing":
+            for account in task_config["accounts"]:
+                log.logger.info(f"正在处理账号: {account['name']}")
+                checkin = CheckinLanjing(account)
+                checkin.checkin_msg = f"🐋蓝鲸世界账号: {account['name']} \n\n****************************\n"
+                result = checkin.run_checkin()
+                log.logger.info(result)
+                print(checkin.checkin_msg)
+                # 发送通知
+                notify(config["notify"], checkin.checkin_msg)
+                time.sleep(5)
+
+        # 处理壹方城签到
+        if current_task_type == "yifangcheng":
+            for account in task_config["accounts"]:
+                log.logger.info(f"正在处理账号: {account['name']}")
+                checkin = CheckinYifangcheng(account)
+                checkin.checkin_msg = f"🏢壹方城账号: {account['name']} \n\n****************************\n"
+                result = checkin.run_checkin()
+                log.logger.info(result)
+                print(checkin.checkin_msg)
                 # 发送通知
                 notify(config["notify"], checkin.checkin_msg)
                 time.sleep(5)

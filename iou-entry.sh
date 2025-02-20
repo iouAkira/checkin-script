@@ -30,4 +30,6 @@ echo "同步配置文件..."
 echo "" >$checkin_CRON_FILE_PATH
 echo "#定时任务 checkin.py" >>$checkin_CRON_FILE_PATH
 echo "40 7 * * * cd $checkin_DIR; python3 checkin.py 2bulu >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
-echo "10 8 * * * cd $checkin_DIR; python3 checkin.py gold_price >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
+echo "45 7 * * * cd $checkin_DIR; python3 checkin.py lanjing >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
+echo "50 7 * * * cd $checkin_DIR; python3 checkin.py yifangcheng >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH
+echo "0 8 * * * cd $checkin_DIR; python3 checkin.py gold_price >$checkin_DATA_DIR/checkin.log " >>$checkin_CRON_FILE_PATH

@@ -4,6 +4,8 @@
 这是一个自动化签到脚本，主要用于自动完成网站或平台的每日签到任务和信息获取。目前支持：
 - 两步路（2bulu）平台签到
 - 水贝金属价格获取
+- 蓝鲸世界签到
+- 壹方城签到
 
 ## 功能特点
 - 支持多账号签到
@@ -49,6 +51,18 @@ gold_price:
     - name: "水贝金价"
       cookie: "your_cookie"
 
+lanjing:
+  accounts:
+    - name: "蓝鲸世界账号1"
+      token: "your_access_token"
+      mall_id: "1547404683667185667"
+
+yifangcheng:
+  accounts:
+    - name: "壹方城账号1"
+      token: "your_token"
+      mall_id: "000001"
+
 notify:
   # 通知配置（可选）
 ```
@@ -61,6 +75,12 @@ python checkin.py 2bulu
 
 # 获取金价
 python checkin.py gold_price
+
+# 蓝鲸世界签到
+python checkin.py lanjing
+
+# 壹方城签到
+python checkin.py yifangcheng
 ```
 
 ### 定时任务
