@@ -28,10 +28,10 @@ class Checkin2bulu:
             if data.get("errCode") == "0":
                 return data
             else:
-                log.logger.error(f"请求失败: {data}")
+                log.logger.error(f"请求失败，请求头：{self.headers}，请求参数：{self.params}，响应：{data}")
                 return None
         else:
-            log.logger.error(f"请求失败，状态码: {response.status_code}")
+            log.logger.error(f"请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求参数：{self.params}")
             return None
 
     def claim_capacity(self, task_id):
@@ -46,10 +46,10 @@ class Checkin2bulu:
                 log.logger.info("签到成功")
                 return True
             else:
-                log.logger.error(f"签到失败: {data.get('errMsg')}")
+                log.logger.error(f"签到失败，请求头：{self.headers}，请求参数：{claim_params}，响应：{data}")
                 return False
         else:
-            log.logger.error(f"请求失败，状态码: {response.status_code}")
+            log.logger.error(f"请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求参数：{claim_params}")
             return False
 
     def run_checkin(self):

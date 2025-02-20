@@ -26,24 +26,24 @@ class CheckinLanjing:
             if response.status_code == 200:
                 result = response.json()
                 if result.get("code") == 0:
-                    self.checkin_msg = "签到成功！"
+                    self.checkin_msg += "签到成功！"
                     log.logger.info("蓝鲸世界签到成功")
                     return True
                 elif result.get("code") == 1 and "今日已签到" in result.get("message", ""):
-                    self.checkin_msg = "今日已签到！"
+                    self.checkin_msg += "今日已签到！"
                     log.logger.info("蓝鲸世界今日已签到")
                     return True
                 else:
-                    self.checkin_msg = f"签到失败：{result.get('message')}"
-                    log.logger.error(f"蓝鲸世界签到失败：{result}")
+                    self.checkin_msg += f"签到失败：{result.get('message')}"
+                    log.logger.error(f"蓝鲸世界签到失败，请求头：{self.headers}，请求体：{data}，响应：{result}")
                     return False
             else:
-                self.checkin_msg = f"请求失败，状态码：{response.status_code}"
-                log.logger.error(f"蓝鲸世界签到请求失败，状态码：{response.status_code}")
+                self.checkin_msg += f"请求失败，状态码：{response.status_code}"
+                log.logger.error(f"蓝鲸世界签到请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求体：{data}")
                 return False
         except Exception as e:
-            self.checkin_msg = f"签到异常：{str(e)}"
-            log.logger.error(f"蓝鲸世界签到异常：{str(e)}")
+            self.checkin_msg += f"签到异常：{str(e)}"
+            log.logger.error(f"蓝鲸世界签到异常：{str(e)}，请求头：{self.headers}，请求体：{data}")
             return False
 
     def run_checkin(self):

@@ -30,24 +30,24 @@ class CheckinYifangcheng:
                 result = response.json()
                 if result.get("code") == 200:
                     handle_uuid = result["data"]["handleUuid"]
-                    self.checkin_msg = "签到成功！"
+                    self.checkin_msg += "签到成功！"
                     log.logger.info("壹方城签到成功")
                     return handle_uuid
                 elif result.get("code") == 1 and "今日已签到" in result.get("message", ""):
-                    self.checkin_msg = "今日已签到！"
+                    self.checkin_msg += "今日已签到！"
                     log.logger.info("壹方城今日已签到")
                     return None
                 else:
-                    self.checkin_msg = f"签到失败：{result.get('msg')}"
-                    log.logger.error(f"壹方城签到失败：{result}")
+                    self.checkin_msg += f"签到失败：{result.get('msg')}"
+                    log.logger.error(f"壹方城签到失败，请求头：{self.headers}，请求参数：{params}，响应：{result}")
                     return None
             else:
-                self.checkin_msg = f"请求失败，状态码：{response.status_code}"
-                log.logger.error(f"壹方城签到请求失败，状态码：{response.status_code}")
+                self.checkin_msg += f"请求失败，状态码：{response.status_code}"
+                log.logger.error(f"壹方城签到请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求参数：{params}")
                 return None
         except Exception as e:
-            self.checkin_msg = f"签到异常：{str(e)}"
-            log.logger.error(f"壹方城签到异常：{str(e)}")
+            self.checkin_msg += f"签到异常：{str(e)}"
+            log.logger.error(f"壹方城签到异常：{str(e)}，请求头：{self.headers}，请求参数：{params}")
             return None
 
     def query_sign_result(self, handle_uuid):
@@ -71,11 +71,11 @@ class CheckinYifangcheng:
                     else:
                         log.logger.warning(f"壹方城签到积分状态异常：{status}")
                 else:
-                    log.logger.error(f"壹方城签到积分查询失败：{result}")
+                    log.logger.error(f"壹方城签到积分查询失败，请求头：{self.headers}，请求参数：{params}，响应：{result}")
             else:
-                log.logger.error(f"壹方城签到积分查询请求失败，状态码：{response.status_code}")
+                log.logger.error(f"壹方城签到积分查询请求失败，状态码：{response.status_code}，请求头：{self.headers}，请求参数：{params}")
         except Exception as e:
-            log.logger.error(f"壹方城签到积分查询异常：{str(e)}")
+            log.logger.error(f"壹方城签到积分查询异常：{str(e)}，请求头：{self.headers}，请求参数：{params}")
 
     def run_checkin(self):
         handle_uuid = self.do_checkin()
