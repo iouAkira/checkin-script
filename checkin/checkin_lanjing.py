@@ -6,6 +6,7 @@ class CheckinLanjing:
         self.base_url = "https://p0245.api.asiatic.online"
         self.checkin_url = f"{self.base_url}/portal-api/mp/activity/signIn"
         self.token_url = f"{self.base_url}/portal-api/mp/home/tokenByMaCode"
+        self.mall_list_url = f"{self.base_url}/portal-api/mp/home/mallList"
         self.base_headers = {
             "content-type": "application/json",
             "Connection": "keep-alive",
@@ -19,7 +20,24 @@ class CheckinLanjing:
         self.token = None
         self.checkin_msg = ""
 
+    def get_mall_list(self):
+        try:
+            response = requests.get(self.mall_list_url, headers=self.base_headers)
+            if response.status_code == 200:
+                log.logger.info("蓝鲸世界获取商场列表成功")
+                return True
+            else:
+                log.logger.error(f"蓝鲸世界获取商场列表失败，状态码：{response.status_code}")
+                return False
+        except Exception as e:
+            log.logger.error(f"蓝鲸世界获取商场列表异常：{str(e)}")
+            return False
+
     def get_token(self):
+        # 先获取商场列表
+        if not self.get_mall_list():
+            return False
+
         params = {
             "mallId": self.mall_id,
             "code": self.code
