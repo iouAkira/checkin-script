@@ -36,7 +36,7 @@ gold_price:
 lanjing:
   accounts:
     - name: "蓝鲸世界账号1"
-      token: "your_access_token"
+      code: "your_code"
       mall_id: "1547404683667185667"
 
 # 壹方城配置
